@@ -1,0 +1,37 @@
+﻿US based travel agency Acme Travel has been hit with a high volumn of fraudulent bookings. In an effort to address this, you are required to build a
+module which can identify if a booking is a potentially fraudulent booking. The agency has identified that most of the fraud bookings
+have one or more of the following characterestics.
+
+1. Customer is not the owner of the card used for the booking.
+2. Booking is generally an international booking.
+3. Booking amount is generally more than 1000 USD.
+4. Bookings are one way bookings.
+5. Bookings are made to countries whith are flagged as high fraud destinations. E.g., Nigeria, Somalia etc.
+6. Travel Date is within 48 hours of booking date.
+7. A lot of bookings are made within a short span of time using the same card.
+
+Based on this behavior, the company has decided that a booking is to be marked as potential fraud in any of the following scenarios - 
+a. If 2 or more than  conditions from 1,2,3,4 and 5 are satisfied.
+b. If condition 4 abd 5 are true.
+c. If condition 7 is true.
+d. If conditions 3 and 6 are true.
+
+These rules would be improved later as the company gets more data about the fraud behavior.
+
+Implement the IsFraudBooking() method in the FraudChecker class to provide the desired behavior. 
+
+The solution would be evaluated on the following criteria - 
+
+1. Correctly solving the problem.
+2. Design.
+3. Maintainability.
+4. Testing
+
+Other considerations:
+- Feel free to add required fields or methods to existing classes or implement new ones as required.
+- In cases where you need a database, you can use an inmemory object to simulate the database. 
+- Where configuration data is needed, create a constant representative test sample of your own to use.
+- When in doubt, ask for help.
+- Ensure your code is being committed regularly. Do not push to github untill you are ready to submit.
+- All solutions must included test cases to prove that the business problem is actually solved.
+
