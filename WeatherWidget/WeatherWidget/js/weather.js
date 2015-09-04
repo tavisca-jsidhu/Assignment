@@ -19,7 +19,7 @@
 var url = "http://training.appyoda.io/api/weather/";
 var cityName = "pune";
 
-function getCityList() {
+window.onload = function getCityList() {
     var optionArray = ["pune|Pune", "beijing|Beijing", "london|London", "moscow|Moscow", "newdelhi|New Delhi", "newyork|New York", "paris|Paris", "tokyo|Tokyo"];
     var render = '<select onchange="updateCity(this.value)" class="btn" id="cityList" name="selectCity"> </select> </br></br> <div align="center" id="location"></div>';
     document.getElementById("cities").innerHTML = render;
@@ -36,9 +36,8 @@ function updateCity(cityList) {
     cityName = document.getElementById('cityList').value;
 
     getJSON("http://training.appyoda.io/api/weather/" + cityName).then(function (data) {
-        document.getElementById("location").innerHTML =
-            '<img src="' + data.weatherIconUrl.value + '" />'
-            + "<h1>" + data.temp_C + " &deg;C </h1>"
+        document.getElementById("location").innerHTML = 
+             "<h1>" + data.temp_C + " &deg;C&ensp;" + '<img src="' + data.weatherIconUrl[0].value + '" />' + "</h1>"
             + "Cloud Cover : " + data.cloudcover
             + "<br>" + "Humidity : " + data.humidity
             + "<br>" + "Precipitation : " + data.precipMM
