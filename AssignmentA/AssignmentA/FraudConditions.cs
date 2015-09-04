@@ -24,7 +24,7 @@ namespace AssignmentA
 
         public bool BookingAmount(decimal _totalFare)
         {
-            if (_totalFare < 1000)
+            if (_totalFare <= 1000)
                 return false;
             return true;
         }
@@ -38,7 +38,7 @@ namespace AssignmentA
 
         public bool FraudDestinations(string _countryName)
         {
-            if (_countryName != "nigeria")
+            if (_countryName != "Nigeria" || _countryName != "Somalia")
                 return false;
             return true;
         }
@@ -48,6 +48,20 @@ namespace AssignmentA
             if ((_travelDate - DateTime.Now).TotalHours > 48)
                 return false;
             return true;
+        }
+
+        public bool SuccessiveBookings(string CardNumber)
+        {
+            int numOfBookings = BookingsInLastWeek(CardNumber);
+            if (numOfBookings <= 3)
+                return false;
+            return true;
+        }
+
+        //-----------Function to Check number of Bookings on Card-------------//
+        public int BookingsInLastWeek(string CardNumber)
+        {
+            return 0;
         }
     }
 }

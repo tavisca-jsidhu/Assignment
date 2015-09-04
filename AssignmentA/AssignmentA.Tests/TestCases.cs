@@ -73,5 +73,15 @@ namespace AssignmentA.Tests
 
             Assert.IsTrue(fraudChecker.IsFraudBooking(booking));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(System.Exception))]
+        public void TestMethod5()
+        {
+            Booking booking = new Booking();
+            var fraudChecker = new FraudChecker();
+
+            Assert.IsTrue(fraudChecker.IsFraudBooking(null));
+        }
     }
 }

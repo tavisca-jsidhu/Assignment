@@ -14,5 +14,6 @@ namespace AssignmentA
         bool OneWayBooking(bool _isRoundTrip);
         bool FraudDestinations(string _countryName);
         bool TravelTime(DateTime _travelDate);
+        bool SuccessiveBookings(string CardNumber);
     }
 }
