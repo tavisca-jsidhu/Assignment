@@ -1,0 +1,41 @@
+select year(Orders.OrderDate), ((select (
+
+select ISNULL(SUM(Employees.salary*(12)),0) 
+from [Assignment].[dbo].[Employees],[Assignment].[dbo].[Orders] Where YEAR(Employees.JoiningDate)<YEAR(Orders.OrderDate)
+group by Year(Orders.OrderDate) 
+
+)+(
+
+select ISNULL(SUM(Employees.salary*(13-Month(Employees.JoiningDate))),0) 
+from [Assignment].[dbo].[Employees],[Assignment].[dbo].[Orders] Where YEAR(Employees.JoiningDate)=YEAR(Orders.OrderDate)
+group by Year(Orders.OrderDate) 
+
+)
+from  [Assignment].[dbo].[Employees] inner join [Assignment].[dbo].[Orders] on Year(Employees.JoiningDate)=Year(Orders.OrderDate)
+)/(
+
+SELECT COUNT(*) from [Assignment].[dbo].[Orders] group by YEAR(OrderDate) 
+ 
+)) as CostPerOrder,
+
+((select (
+
+select ISNULL(SUM(Employees.salary*(12)),0) 
+from [Assignment].[dbo].[Employees],[Assignment].[dbo].[Orders] Where YEAR(Employees.JoiningDate)<YEAR(Orders.OrderDate)
+group by Year(Orders.OrderDate) 
+
+)+(
+
+select ISNULL(SUM(Employees.salary*(13-Month(Employees.JoiningDate))),0) 
+from [Assignment].[dbo].[Employees],[Assignment].[dbo].[Orders] Where YEAR(Employees.JoiningDate)=YEAR(Orders.OrderDate)
+group by Year(Orders.OrderDate) 
+
+)
+from  [Assignment].[dbo].[Employees] inner join [Assignment].[dbo].[Orders] on Year(Employees.JoiningDate)=Year(Orders.OrderDate)
+)/(
+
+(SELECT sum(OrderAmount) from [Assignment].[dbo].[Orders] group by YEAR(OrderDate) )/60
+
+)) as SpentPerDollar
+
+from [Assignment].[dbo].[Employees],[Assignment].[dbo].[Orders]
